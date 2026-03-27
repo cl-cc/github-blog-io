@@ -1,1 +1,1 @@
-var a="/assets/newLogo.32464a32.png";export{a as _};
+var o="/github-blog-io/assets/newLogo.32464a32.png";export{o as _};

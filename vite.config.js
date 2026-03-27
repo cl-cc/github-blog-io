@@ -4,7 +4,7 @@
  * @Author: 程
  * @Date: 2021-10-28 15:02:15
  * @LastEditors: 程
- * @LastEditTime: 2025-09-04 17:07:58
+ * @LastEditTime: 2026-03-27 11:39:44
  */
 
 const { defineConfig } = require('vite');
@@ -13,6 +13,7 @@ const path = require('path');
 
 // https://vitejs.dev/config/
 module.exports = defineConfig({
+  base: '/github-blog-io/',
   plugins: [vue()],
   resolve: {
     alias: {
