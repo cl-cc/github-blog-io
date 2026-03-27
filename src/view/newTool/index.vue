@@ -4,7 +4,7 @@
  * @Author: 程
  * @Date: 2025-08-30 13:41:22
  * @LastEditors: 程
- * @LastEditTime: 2026-03-20 16:55:39
+ * @LastEditTime: 2026-03-27 13:01:16
 -->
 <script setup lang="ts">
 import init_search from '@/utils/fuseSearch';
@@ -91,9 +91,9 @@ const changeLanguage = (lang: string) => {
             <el-button type="primary" icon="Eleme" @click="changeLanguage('zh')">中文</el-button>
             <el-button type="warning" icon="ElemeFilled" @click="changeLanguage('en')">英文</el-button>
           </div> -->
-          <div class="absolute top-0 left-0">
+          <!-- <div class="absolute top-0 left-0">
             <img class="w-[250px]" src="./name-loop.svg" />
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
