@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>图片滑动揭示文字</title>
+    <style>
+      body {
+        margin: 0;
+        background: #eee;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: 'Arial', sans-serif;
+      }
+
+      .reveal-wrapper {
+        position: relative;
+        width: 300px;
+        height: 400px;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        background: #fff;
+      }
+
+      .text-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: 18px;
+        line-height: 1.6;
+        color: #333;
+        z-index: 1;
+      }
+
+      .image-front {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: url('/public//tool/bootstrap.png');
+        background-size: 100% 100%;
+        /* background-size: cover; */
+        background-position: center;
+        clip-path: polygon(var(--clip-position) 0, 100% 0, 100% 100%, var(--clip-position) 100%);
+        z-index: 2;
+        transition: clip-path 0s ease;
+      }
+
+      .hint {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        z-index: 3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal-wrapper" id="revealBox">
+      <div class="text-back">团子是小小开心果，<br />每一天都软萌又闪光 ✨<br /><br />爸爸妈妈超级爱你 ❤️</div>
+      <div class="image-front" id="frontImage"></div>
+      <div class="hint">滑动揭晓团子密语 👶</div>
+    </div>
+
+    <script>
+      const wrapper = document.getElementById('revealBox');
+      const front = document.getElementById('frontImage');
+
+      // 初始从左开始遮盖
+      front.style.setProperty('--clip-position', `0%`);
+
+      function updateClip(x) {
+        const percent = (x / wrapper.offsetWidth) * 100;
+        front.style.setProperty('--clip-position', `${percent}%`);
+      }
+
+      wrapper.addEventListener('mousemove', e => {
+        const rect = wrapper.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        updateClip(x);
+      });
+
+      wrapper.addEventListener('touchmove', e => {
+        const rect = wrapper.getBoundingClientRect();
+        const x = e.touches[0].clientX - rect.left;
+        updateClip(x);
+      });
+
+      wrapper.addEventListener('mouseleave', () => {
+        front.style.setProperty('--clip-position', `0%`);
+      });
+
+      wrapper.addEventListener('touchend', () => {
+        front.style.setProperty('--clip-position', `0%`);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+html.dark {
+  --bg-color: #fff;
+  --home-bg-color: #000;
+  --home-top-color: rgba(0, 0, 0, .1);
+  --home-topline-color: rgba(205, 208, 214, .5);
+  --home-home-color: #303133;
+  --home-text-color: #EBEDF0;
+  --home-tips-color: #CDD0D6;
+}

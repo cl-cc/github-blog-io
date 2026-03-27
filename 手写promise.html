@@ -1,0 +1,101 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: 程
+ * @Date: 2022-11-10 10:00:03
+ * @LastEditors: 程
+ * @LastEditTime: 2022-11-10 10:34:08
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    const n = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject('123');
+      }, 1000);
+    });
+    const n1 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject('456');
+      }, 500);
+    });
+    const n2 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject('789');
+      }, 1500);
+    });
+
+    Promise.any([n, n1, n2])
+      .then(v => {
+        console.log(v);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  </script>
+  <!-- <script>
+    const PRNDING = 'pending';
+    const FUILFLLED = 'fulfilled';
+    const REJECTED = 'regected';
+
+    class Mypromise {
+      constructor(exector) {
+        exector(this.resolve, this.reject);
+      }
+
+      static = PRNDING;
+      value = null;
+      reason = undefined;
+      successCallBack = undefined;
+      failCallBack = undefined;
+
+      resolve = value => {
+        if (this.static !== PRNDING) return;
+        this.static = FUILFLLED;
+        this.value = value;
+
+        this.successCallBack && this.successCallBack(this.value);
+      };
+
+      reject = reject => {
+        if (this.static !== PRNDING) return;
+        this.static = REJECTED;
+        this.reason = reject;
+
+        this.failCallBack && this.failCallBack(this.reason);
+      };
+
+      then(successCallBack, failCallback) {
+        if (this.static == FUILFLLED) {
+          successCallBack(this.value);
+        } else if (this.static == REJECTED) {
+          failCallback(this.reason);
+        } else {
+          this.successCallBack = successCallBack;
+          this.failCallBack = failCallback;
+        }
+      }
+    }
+
+    let n = new Mypromise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('123');
+      }, 1000);
+    });
+    n.then(
+      v => {
+        console.log(v);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  </script> -->
+</html>
