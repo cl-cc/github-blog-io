@@ -4,9 +4,9 @@
  * @Author: 程
  * @Date: 2021-10-28 15:02:15
  * @LastEditors: 程
- * @LastEditTime: 2025-12-12 11:34:57
+ * @LastEditTime: 2026-03-27 11:45:41
  */
-import { createWebHistory, createRouter } from 'vue-router';
+import { createWebHistory, createRouter, createWebHashHistory } from 'vue-router';
 const routes = [
   {
     path: '/',
@@ -107,7 +107,7 @@ const routes = [
     component: () => import('@/view/newTool/index.vue'),
   },
 ];
-const routerHistory = createWebHistory();
+const routerHistory = createWebHashHistory();
 const router = createRouter({
   history: routerHistory,
   routes,
